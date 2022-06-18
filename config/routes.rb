@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/new'
+  get 'users/create'
+  get 'users/update'
+  get 'users/edit'
+  get 'users/destroy'
   devise_for :users
   resources :lives
   resources :users, except: [:index, :show]
