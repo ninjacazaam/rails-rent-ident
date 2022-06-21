@@ -1,2 +1,8 @@
 <h1>lives edit page</h1>
 <p>Find me in app/views/lives/edit.html.erb</p>
+
+<% @lives.each do |life| %>
+  <% if policy(life).edit? %>
+    <%= link_to "Update", edit_life_path(life) %>
+  <% end %>
+<% end %>
