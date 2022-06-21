@@ -1,2 +1,5 @@
 <h1>lives new page</h1>
 <p>Find me in app/views/lives/new.html.erb</p>
+<% if policy(life).create? %>
+  <%= link_to "New life", new_life_path %>
+<% end %>
