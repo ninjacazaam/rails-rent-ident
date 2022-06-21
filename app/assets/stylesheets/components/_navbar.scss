@@ -1,12 +1,26 @@
-.navbar-lewagon {
+$riblue : rgb(69, 98, 226);
+$ltblue : rgb(151, 151, 255);
+
+.navbar {
   justify-content: space-between;
-  background: white;
+  background: $riblue;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar .form-inline {
+  display: flex;
+}
+
+.navbar .navbar-rentident {
+  margin-left: 20px;
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: $body-font;
+}
+
+.navbar .navbar-nav {
+  margin-right: 20px;
 }
