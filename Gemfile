@@ -70,3 +70,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Cloudinary
 gem 'cloudinary'
+
+# Pundit
+gem 'pundit'

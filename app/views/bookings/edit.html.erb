@@ -1,2 +1,8 @@
 <h1>Bookings#edit</h1>
 <p>Find me in app/views/bookings/edit.html.erb</p>
+
+<% @bookings.each do |booking| %>
+  <% if policy(booking).edit? %>
+    <%= link_to "Update", edit_booking_path(booking) %>
+  <% end %>
+<% end %>

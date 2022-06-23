@@ -144,6 +144,7 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-darwin)
+    nokogiri (1.13.6-arm64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.0)
@@ -158,6 +159,8 @@ GEM
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
+    pundit (2.2.0)
+      activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3.1)
     rack-mini-profiler (2.3.4)
@@ -267,6 +270,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  arm64-darwin-21
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)
@@ -284,6 +288,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 5.0)
+  pundit
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6)
   sass-rails (>= 6)
@@ -301,3 +306,4 @@ RUBY VERSION
 
 BUNDLED WITH
    2.3.8
+   2.3.15
