@@ -19,7 +19,7 @@ class LivesController < ApplicationController
     authorize @life
 
     if @life.save
-      redirect_to list_path(@list)
+      redirect_to life_path(@life)
     else
       render :new
     end
