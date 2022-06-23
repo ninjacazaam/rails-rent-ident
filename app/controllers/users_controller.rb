@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
+    skip_authorization
   end
 
   def create
