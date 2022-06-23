@@ -41,5 +41,5 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+.Gemfile.lock
 
-Gemfile.lock
