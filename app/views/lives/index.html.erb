@@ -1,2 +1,21 @@
-<h1>lives index page</h1>
-<p>Find me in app/views/lives/index.html.erb</p>
+<body>
+<div class="container" id="all_lives">
+
+<div class="row">
+<% @lives.each do |life| %>
+<div class="card">
+  <img src="https://picsum.photos/id/<%= rand(1..275) %>/500/600" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">
+    <%= life.title %>
+    </h5>
+    <p class="card-text"><%= life.bio[0,50] %>...</p>
+    <h5 class="card-text"><%= life.rating %>/5 $<%= life.price %></h5>
+    <h5 class="btn"><%= link_to "See more", life_path(life) %></h5>
+  </div>
+</div>
+<% end %>
+</div>
+
+</div>
+</body>

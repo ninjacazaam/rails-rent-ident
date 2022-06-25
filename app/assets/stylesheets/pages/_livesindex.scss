@@ -1,0 +1,29 @@
+#all_lives {
+  align-items: flex-start;
+  margin-top: 100px;
+}
+
+.row {
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 18rem;
+  height: max-content;
+  .card-img-top {
+    width: 95%;
+    height: 50%;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}
+
+.btn {
+  background-color: $ltblue;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
