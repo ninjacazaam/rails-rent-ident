@@ -45,3 +45,12 @@ end
   booking.life = Life.all.sample
   booking.save!
 end
+
+puts "Authenticating Admin..."
+User.create!(
+  name: 'admin',
+  email: 'admin@admin.com',
+  password: "admin1"
+)
+
+puts "Welcome Cap'n!"
