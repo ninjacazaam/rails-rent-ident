@@ -1,0 +1,16 @@
+.row {
+  justify-content: center;
+  gap: 20px;
+  margin-top: 650px;
+}
+
+.card {
+  width: 18rem;
+  height: max-content;
+  .card-img-top {
+    width: 95%;
+    height: 50%;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}

@@ -1,9 +1,23 @@
-<h1>Lives Listings Index</h1>
-
-<div class="container">
 <body>
+<div class="container" id="all_lives">
 
-
-
-</body>
+<div class="row">
+<% @lives.each do |life| %>
+<div class="card">
+  <img src="https://picsum.photos/id/<%= rand(1..275) %>/500/600" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">
+    <%= life.title %>
+    </h5>
+    <p class="card-text">
+    <%= life.bio %>
+    </p>
+    <h5 class="card-text"><%= life.rating %>/5 $<%= life.price %></h5>
+    <a href="#" class="btn btn-primary">Check it out</a>
+  </div>
 </div>
+<% end %>
+</div>
+
+</div>
+</body>
