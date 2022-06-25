@@ -2,9 +2,14 @@
   <h1>User Dashboard</h1>
   <div>
     <h2>User Info</h2>
-    <%= cl_image_tag(@current_user.avatar.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill") %>
-    <%= @user.name %>
-    <%= @user.email %>
+    <% if @current_user.avatar.attached? %>
+      <%= cl_image_tag(@current_user.avatar.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill") %>
+      <%= @user.name %>
+      <%= @user.email %>
+    <% else %>
+      <%= @user.name %>
+      <%= @user.email %>
+    <% end %>
   </div>
     <% @user.bookings.each do |booking| %>
       <li>Life Name: <%= booking.life.title %></li>
