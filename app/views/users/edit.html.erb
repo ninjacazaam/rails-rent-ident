@@ -1,8 +1,0 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-
-<% @users.each do |user| %>
-  <% if policy(user).edit? %>
-    <%= link_to "Update", edit_user_path(user) %>
-  <% end %>
-<% end %>

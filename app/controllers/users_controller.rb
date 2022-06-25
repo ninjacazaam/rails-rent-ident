@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
+    skip_authorization
   end
 
   def create
@@ -37,6 +39,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email_address, :photo)
+    params.require(:user).permit(:name, :email_address, :avatar)
   end
 end
