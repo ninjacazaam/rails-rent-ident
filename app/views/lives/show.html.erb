@@ -1,2 +1,7 @@
-<h1>lives show page</h1>
-<p>Find me in app/views/lives/show.html.erb</p>
+<div class="container">
+  <div class="card" id="thelife">
+  <img src="https://picsum.photos/id/<%= rand(1..275) %>/500/600" class="card-img-top" alt="...">
+  <h1 id="lifetitle"><%= @life.title %></h1>
+  <h2 id="lifebio"><%= @life.bio %></h2>
+  </div>
+</div>

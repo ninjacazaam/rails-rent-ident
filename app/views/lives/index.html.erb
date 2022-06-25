@@ -9,11 +9,9 @@
     <h5 class="card-title">
     <%= life.title %>
     </h5>
-    <p class="card-text">
-    <%= life.bio %>
-    </p>
+    <p class="card-text"><%= life.bio[0,50] %>...</p>
     <h5 class="card-text"><%= life.rating %>/5 $<%= life.price %></h5>
-    <a href="#" class="btn btn-primary">Check it out</a>
+    <h5 class="btn"><%= link_to "See more", life_path(life) %></h5>
   </div>
 </div>
 <% end %>
