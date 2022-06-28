@@ -3,6 +3,13 @@ class LivesController < ApplicationController
 
   def index
     @lives = policy_scope(Life)
+    skip_authorization
+    if params[:search].blank?
+      @lives = policy_scope(Life)
+    else
+      @parameter = params[:search].downcase
+      @lives = policy_scope(Life).where("lower(lives.title) LIKE :search", search: "%#{@parameter}%")
+    end
   end
 
   def show
@@ -36,6 +43,9 @@ class LivesController < ApplicationController
   def destroy
     @life.destroy
     redirect_to lives_path
+  end
+
+  def search
   end
 
   private
