@@ -1,6 +1,21 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/booking.html.erb</p>
-
-<% if policy(@booking).create? %>
-  <%= link_to "New booking", new_booking_path %>
-<% end %>
+<div class="container">
+  <% if policy(@booking).create? %>
+    <div class="col">
+      <div class="row">
+        <%# <p>Life I am booking:</p>
+        <p><%= @life.title %></p> %>
+      </div>
+    </div>
+    <div id='life-booking-dates' data-unavailable="<%= @life.unavailable_dates.to_json %>">
+      <% if current_user.id != @life.user_id  %>
+        <%= simple_form_for(@booking) do |f| %>
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, id: "booking_start_date" %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, id: "booking_end_date" %>
+          <%= f.hidden_field :life_id, value: @life.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.button :submit, "Book", class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
