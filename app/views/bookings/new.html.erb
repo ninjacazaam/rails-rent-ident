@@ -1,6 +1,11 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/booking.html.erb</p>
-
-<% if policy(@booking).create? %>
-  <%= link_to "New booking", new_booking_path %>
-<% end %>
+<div class="container">
+  <% if policy(@booking).create? %>
+    <div class="col">
+      <div class="row">
+        <p>Life I am booking:</p>
+        <p><%= @life.title %></p>
+      </div>
+    </div>
+    <%= link_to "Confirm booking", new_booking_path %>
+  <% end %>
+</div>

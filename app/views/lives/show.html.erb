@@ -3,5 +3,6 @@
   <img src="https://picsum.photos/id/<%= rand(1..275) %>/500/600" class="card-img-top" alt="...">
   <h1 id="lifetitle"><%= @life.title %></h1>
   <h2 id="lifebio"><%= @life.bio %></h2>
+  <%= link_to 'Book this Life!', new_booking_path(:life_id=>@life.id), class: "btn btn-primary" %>
   </div>
 </div>

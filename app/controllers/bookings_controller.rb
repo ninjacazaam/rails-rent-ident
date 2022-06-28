@@ -9,6 +9,8 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @life = Life.find(params[:life_id])
+    authorize @life
     @booking = Booking.new
     authorize @booking
   end
