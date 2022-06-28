@@ -13,5 +13,14 @@ class Booking < ApplicationRecord
     if end_date < start_date
       errors.add(:end_date, "must be after the start date")
     end
- end
+  end
+
+  def start_date_is_today_onwards
+    return if start_date.blank?
+
+    if start_date < Date.today
+      errors.add(:start_date, "Can't book dates that have already elapsed!")
+    end
+  end
+
 end

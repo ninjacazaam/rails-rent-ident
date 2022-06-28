@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_life, only: [:new]
 
   def index
     @bookings = Booking.all
@@ -9,16 +10,16 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @life = Life.find(params[:life_id])
-    authorize @life
     @booking = Booking.new
     authorize @booking
+    @booking.life_id = @life.id
   end
 
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
-      redirect_to life_path(@life)
+      redirect_to life_path(params["booking"]["life_id"])
+      authorize @booking
     else
       render :new
     end
@@ -44,8 +45,13 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def set_life
+    @life = Life.find(params[:life_id])
+    authorize @life
+  end
+
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :life_id, :user_id)
   end
 
 end

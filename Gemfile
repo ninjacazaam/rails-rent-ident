@@ -73,3 +73,6 @@ gem 'cloudinary'
 
 # Pundit
 gem 'pundit'
+
+# Flatpickr
+gem 'flatpickr'

@@ -5,4 +5,10 @@ class Life < ApplicationRecord
 
   validates :title, :price, :bio, presence: true
   validates :price, numericality: { only_integer: true }
+
+  def unavailable_dates
+    bookings.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
 end
