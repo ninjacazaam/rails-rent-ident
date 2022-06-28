@@ -7,7 +7,11 @@
         <p class="card-text"><%= @life.bio %></p>
       </div>
       <ul class="list-group list-group-flush">
+      <% if @life.rating.present?%>
         <li class="list-group-item"><%="☆" * @life.rating %></li>
+      <% else %>
+        <li class="list-group-item">This life has no ratings yet!</li>
+      <% end %>
         <li class="list-group-item">$<%= @life.price %></li>
       </ul>
       <div class="card-links">
