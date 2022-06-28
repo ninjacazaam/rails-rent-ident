@@ -1,6 +1,6 @@
 #all_lives {
   align-items: flex-start;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .row {
@@ -26,4 +26,11 @@
 a {
   text-decoration: none;
   color: white;
+}
+
+#searchBar {
+  position: relative;
+  width: 50%;
+  left: 25%;
+  top: 50px;
 }
