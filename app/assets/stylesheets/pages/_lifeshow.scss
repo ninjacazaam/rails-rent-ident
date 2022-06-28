@@ -1,24 +1,50 @@
+.content {
+  display: flex;
+}
+
+#show {
+  width: 60%;
+}
+
 .container {
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 
-#thelife {
-  background-color: $ltblue;
-  height: 75%;
-  width: 75%;
-  align-items: center;
+.card .card-img-top {
+  height: 400px;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
-#lifetitle {
-  font-size: 40px;
-  font-weight: bold;
+.card {
+  border-radius: 10px;
+  border-color: $ltblue;
+}
+
+.card-body {
   text-align: center;
-  justify-content: center;
-
 }
 
-#lifebio {
-  justify-content: center;
-  font-size: small;
+.card-links {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.list-group {
+  text-align: center;
+  border-color: $ltblue;
+  .list-group-item {
+    border-color: $ltblue;
+  }
+}
+
+#path-link {
+  background-color: $ltblue;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
 }
