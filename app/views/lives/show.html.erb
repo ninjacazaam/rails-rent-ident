@@ -1,8 +1,32 @@
-<div class="container">
-  <div class="card" id="thelife">
-  <img src="https://picsum.photos/id/<%= rand(1..275) %>/500/600" class="card-img-top" alt="...">
-  <h1 id="lifetitle"><%= @life.title %></h1>
-  <h2 id="lifebio"><%= @life.bio %></h2>
-  <%= link_to 'Book this Life!', new_booking_path(:life_id=>@life.id), class: "btn btn-primary" %>
+<div class="content">
+  <div class="container" id="show">
+    <div class="card" style="width: 80%">
+      <img class="card-img-top mx-auto" src="https://picsum.photos/id/<%= rand(1..275) %>/500/600">
+      <div class="card-body">
+        <h5 class="card-title"><%= @life.title %></h5>
+        <p class="card-text"><%= @life.bio %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%="☆" * @life.rating %></li>
+        <li class="list-group-item">$<%= @life.price %></li>
+      </ul>
+      <div class="card-links">
+        <%= link_to 'Book Now', new_booking_path(:life_id=>@life.id), id: "path-link" %>
+        <%= link_to 'Back to Results', lives_path, id: "path-link" %>
+      </div>
+    </div>
+  </div>
+  <%# THESE ARE HARD CODED REVIEWS RIGHT NOW %>
+  <div class="container" id="reviews">
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Reviews</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">This life sucks</li>
+        <li class="list-group-item">Had so much fun, would recommend</li>
+        <li class="list-group-item">I'm dead inside</li>
+      </ul>
+     </div>
+    </div>
   </div>
 </div>
