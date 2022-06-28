@@ -37,7 +37,7 @@ class LivesController < ApplicationController
 
   def update
     @life.update(params[:life])
-    redirect_to lives_path(@life)
+    redirect_to life_path(@life)
   end
 
   def destroy
