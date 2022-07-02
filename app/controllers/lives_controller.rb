@@ -13,6 +13,9 @@ class LivesController < ApplicationController
   end
 
   def show
+    @owner = User.where(id: @life.user_id)
+    @my_bookings = []
+    @my_bookings << Booking.where(life_id: @life.id)
   end
 
   def new

@@ -18,10 +18,14 @@
             <%= link_to "Browse", lives_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "ceolady.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <img class="fa-solid fa-user avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://pic.onlinewebfonts.com/svg/img_264570.png" />
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Make a Life", new_life_path, class: "dropdown-item" %>
-              <%#= link_to "My Lives", "#", class: "dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>

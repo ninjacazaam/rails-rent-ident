@@ -2,8 +2,6 @@
   <% if policy(@booking).create? %>
     <div class="col">
       <div class="row">
-        <%# <p>Life I am booking:</p>
-        <p><%= @life.title %></p> %>
       </div>
     </div>
     <div id='life-booking-dates' data-unavailable="<%= @life.unavailable_dates.to_json %>">
@@ -15,7 +13,7 @@
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.button :submit, "Book", class: "btn btn-primary" %>
         <% end %>
-    <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -1,7 +1,6 @@
 <div class="container mt-3 mb-3">
-  <h1>User Dashboard</h1>
-  <div>
-    <h2>User Info</h2>
+  <div class="row">
+    <h1><%= @user.name %>'s Dashboard</h1>
     <% if @current_user.avatar.attached? %>
       <%= cl_image_tag(@current_user.avatar.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill") %>
       <%= @user.name %>
@@ -10,23 +9,52 @@
       <%= @user.name %>
       <%= @user.email %>
     <% end %>
-  </div>
-    <% @user.bookings.each do |booking| %>
-      <li>Life Name: <%= booking.life.title %></li>
-      <li>About: <%= booking.life.bio %></li>
-      <li>Cost: <%= booking.life.price %></li>
-      <li>Dates: <%= booking.start_date %> to <%= booking.end_date %></li>
-    <% end %>
-  <div>
-  <div>
-    <h2>My Lives for rent</h2>
-    <% @user.lives.each do |life| %>
-      <li>Life Name: <%= life.title %></li>
-      <li>Bio: <%= life.bio %></li>
-      <li>Cost: $<%= life.price %></li>
-    <% end %>
-  </div>
-    <h2>Make a new booking</h2>
-    <a href=" <%= lives_path %> " class="btn btn-primary">button</a>
-  </div>
-</div>
+    <div class="row">
+      <h2>My Upcoming Bookings</h2>
+      <% @upcoming_bookings.each do |booking| %>
+      <div class="card col-sm">
+        <%= booking.life.photos.first %>
+        <div class="card-body">
+            <h5 class="card-title">
+            <%= booking.life.title %>
+            </h5>
+            <p class="card-text"><%= booking.life.bio[0,50] %>...</p>
+            <h5 class="card-text">Cost: $<%= booking.life.price %></h5>
+            <p> Dates: <%= booking.start_date %> to <%= booking.end_date %> </p>
+            <h5 class="btn"><%= link_to "See more", life_path(booking.life) %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <h2>My Lives for rent</h2>
+      <div class="row">
+        <% @user.lives.each do |life| %>
+        <div class="card col-sm">
+          <%= life.photos.first %>
+           <div class="card-body">
+            <h5 class="card-title">
+            <%= life.title %>
+            </h5>
+            <p class="card-text"><%= life.bio[0,50] %>...</p>
+            <% if life.rating.present?%>
+              <h5 class="card-text"><%= "☆" * life.rating %></h5>
+            <% else %>
+              <h5 class="card-text">This life has no ratings yet!</h5>
+            <% end %>
+            <h5 class="card-text">$<%= life.price %></h5>
+            <h5 class="btn"><%= link_to "See bookings", life_path(life) %></h5>
+          </div>
+            <% @my_bookings.first.each do |booking| %>
+              <%= User.where(id: booking.user_id).first.name %>
+            <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div>
+        <h2>Edit your profile</h2>
+        <a href=" <%= edit_user_registration_path %> " class="btn btn-primary">button</a>
+      <div>
+      <h2>Make a new booking</h2>
+      <a href=" <%= lives_path %> " class="btn btn-primary">Browse available lives!</a>
+    </div>
