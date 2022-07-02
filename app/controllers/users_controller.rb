@@ -17,6 +17,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @upcoming_bookings = Booking.where(user_id: current_user.id)
+    @my_bookings = []
+    current_user.lives.each do |life|
+      @my_bookings << Booking.where(life_id: life.id)
+    end
+
   end
 
   def update

@@ -1,0 +1,47 @@
+    <div class="container container-booking" id="bookings">
+      <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Bookings for this life:</h5>
+      </div>
+        <div class="text-body row">
+          <ul class="list-group-flush">
+            <% @my_bookings.first.each do |booking| %>
+              <li class="list-group-item flex-row col-6">
+                <%= User.where(id: booking.user_id).first.name %>
+                <p class="small"><%= booking.status %></p>
+                <% if booking.status == "pending" %>
+                  <div class="flex-row col-2">
+                    <button class="btn btn-success">Accept</button>
+                  </div>
+                  <div class="flex-row col-2">
+                    <button class="btn btn-danger">Decline</button>
+                  </div>
+                <% end %>
+              </li>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+<%# <div class="">
+  <div class="">
+  <h5 class="card-title">Bookings for this life:</h5>
+    <div class="">
+      <% @my_bookings.first.each do |booking| %>
+        <%# <li class=""> %>
+          <%#= User.where(id: booking.user_id).first.name %>
+          <%# <p class="small"><%= booking.status </p>%>
+    <%# </div> %>
+          <%# <div class=""> %>
+          <%# <% if booking.status == "pending" %>
+              <%# <button class="btn btn-success">Accept</button> %>
+            <%# </div> %>
+            <%# <div class="">
+              <button class="btn btn-danger">Decline</button>
+            </div>
+          <% end %>
+      <%# <% end %>
+  <%# </div> %>
+<%# </div> %>

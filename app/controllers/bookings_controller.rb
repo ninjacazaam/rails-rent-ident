@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.status = "pending"
     if @booking.save
       redirect_to life_path(params["booking"]["life_id"])
       authorize @booking
