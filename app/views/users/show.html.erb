@@ -1,12 +1,25 @@
 <div class="container mt-3 mb-3">
   <div class="row">
     <h1><%= @user.name %>'s Dashboard</h1>
+    <% if @current_user.avatar.attached? %>
+      <%= cl_image_tag(@current_user.avatar.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill") %>
+      <%= @user.name %>
+      <%= @user.email %>
+    <% else %>
+      <%= @user.name %>
+      <%= @user.email %>
+    <% end %>
     <div class="row">
       <h2>My Upcoming Bookings</h2>
       <% @upcoming_bookings.each do |booking| %>
-      <div class="card col-sm">
-        <%= booking.life.photos.first %>
+      <div class="card">
+         <% if booking.life.photos.attached? %>
+              <%= cl_image_tag booking.life.photos.first.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+            <% end %>
         <div class="card-body">
+          <p><%= booking.status.upcase %></p>
             <h5 class="card-title">
             <%= booking.life.title %>
             </h5>
@@ -18,12 +31,12 @@
         </div>
       <% end %>
     </div>
-    <div>
+    <div class="row">
       <h2>My Lives for rent</h2>
       <div class="row">
         <% @user.lives.each do |life| %>
         <div class="card col-sm">
-          <%= life.photos.first %>
+          <%= cl_image_tag life.photos.first.key %>
            <div class="card-body">
             <h5 class="card-title">
             <%= life.title %>
@@ -43,68 +56,12 @@
         </div>
         <% end %>
       </div>
-      <h2>Make a new booking</h2>
-      <a href=" <%= lives_path %> " class="btn btn-primary">Browse available lives!</a>
+      <div>
+        <h2>Edit your profile</h2>
+        <a href=" <%= edit_user_registration_path %> " class="btn btn-primary">button</a>
+      <div>
+        <h2>Make a new booking</h2>
+        <a href=" <%= lives_path %> " class="btn btn-primary">Browse available lives!</a>
+      </div>
     </div>
-  <h1>User Dashboard</h1>
-  <div>
-    <h2>User Info</h2>
-    <% if @current_user.avatar.attached? %>
-      <%= cl_image_tag(@current_user.avatar.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill") %>
-      <%= @user.name %>
-      <%= @user.email %>
-    <% else %>
-      <%= @user.name %>
-      <%= @user.email %>
-    <% end %>
-  </div>
-  <div>
-    <h2>My Bookings:</h2>
-    <% @user.bookings.each do |booking| %>
-      <div class="content">
-        <div class="container" id="show">
-          <div class="card" style="width: 80%">
-            <% if booking.life.photos.attached? %>
-              <%= cl_image_tag booking.life.photos.first.key %>
-            <% else %>
-              <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= booking.life.title %></h5>
-              <p class="card-text"><%= booking.life.bio %></p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <% if booking.life.rating.present?%>
-              <li class="list-group-item"><%="☆" * booking.life.rating %></li>
-            <% else %>
-              <li class="list-group-item">This life has no ratings yet!</li>
-            <% end %>
-              <li class="list-group-item">$<%= booking.life.price %></li>
-            </ul>
-            <div class="card-links">
-              <%= link_to 'Cancel', booking_path,
-                                    id: "path-link",
-                                    method: :delete,
-                                    data: { confirm: "Are you sure you want to cancel?" } %>
-            </div>
-          </div>
-    <% end %>
-  </div>
-  <div>
-    <h2>My Lives for rent</h2>
-    <% @user.lives.each do |life| %>
-      <li>Life Name: <%= life.title %></li>
-      <li>Bio: <%= life.bio %></li>
-      <li>Cost: $<%= life.price %></li>
-    <% end %>
-  </div>
-  <div>
-  <h2>Edit your profile</h2>
-  <a href=" <%= edit_user_registration_path %> " class="btn btn-primary">button</a>
-  <div>
-    <h2>Make a new booking</h2>
-    <a href=" <%= lives_path %> " class="btn btn-primary">button</a>
-  </div>
-</div>
-
 </div>

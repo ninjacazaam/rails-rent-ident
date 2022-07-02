@@ -1,4 +1,4 @@
-    <div class="container container-booking" id="bookings">
+    <div class="container container-booking" id="bookings-card">
       <div class="card">
       <div class="card-body">
         <h5 class="card-title">Bookings for this life:</h5>
@@ -11,10 +11,12 @@
                 <p class="small"><%= booking.status %></p>
                 <% if booking.status == "pending" %>
                   <div class="flex-row col-2">
-                    <button class="btn btn-success">Accept</button>
+                    <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success", remote: :true %>
+                    <%# <button class="btn btn-success">Accept</button> %>
                   </div>
                   <div class="flex-row col-2">
-                    <button class="btn btn-danger">Decline</button>
+                    <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger", remote: :true %>
+                    <%# <button class="btn btn-danger">Decline</button> %>
                   </div>
                 <% end %>
               </li>

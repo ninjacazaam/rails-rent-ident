@@ -20,4 +20,12 @@ class BookingPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def accept?
+    true
+  end
+
+  def decline?
+    true
+  end
 end
