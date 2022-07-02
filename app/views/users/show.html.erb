@@ -13,7 +13,11 @@
       <h2>My Upcoming Bookings</h2>
       <% @upcoming_bookings.each do |booking| %>
       <div class="card">
-        <%= cl_image_tag booking.life.photos.first.key, :width=>200, :height=>200, :radius=>"max", :crop=>"fill"%>
+         <% if booking.life.photos.attached? %>
+              <%= cl_image_tag booking.life.photos.first.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+            <% end %>
         <div class="card-body">
           <p><%= booking.status.upcase %></p>
             <h5 class="card-title">
@@ -60,5 +64,4 @@
         <a href=" <%= lives_path %> " class="btn btn-primary">Browse available lives!</a>
       </div>
     </div>
-  </div>
 </div>
