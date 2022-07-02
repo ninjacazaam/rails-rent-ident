@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy, :accept, :decline]
   before_action :set_life, only: [:new]
 
   def index
@@ -37,6 +37,20 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     redirect_to bookings_path
+  end
+
+  def accept
+    @booking.status = "confirmed"
+    if @booking.save
+      redirect_to life_path(@booking.life_id)
+    end
+  end
+
+  def decline
+    @booking.status = "declined"
+    if @booking.save
+      redirect_to life_path(@booking.life_id)
+    end
   end
 
   private
