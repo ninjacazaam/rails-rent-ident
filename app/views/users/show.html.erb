@@ -10,7 +10,7 @@
       <%= @user.email %>
     <% end %>
     <div class="row">
-      <% if @booking.present? %>
+      <% if @upcoming_bookings.present? %>
       <h2>My Upcoming Bookings</h2>
       <% @upcoming_bookings.each do |booking| %>
       <div class="card">
