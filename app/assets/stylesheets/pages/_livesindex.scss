@@ -41,7 +41,7 @@ button[type=submit] {
   background-color: white;
   border-color: $ltblue;
   color: $riblue;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 .card-title{
@@ -50,4 +50,9 @@ button[type=submit] {
   white-space: nowrap;
   overflow: hidden;
   font-weight: bolder;
+}
+
+img {
+  border-radius: 10px;
+  padding: 5px;
 }

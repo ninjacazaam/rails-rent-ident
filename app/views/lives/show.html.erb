@@ -1,6 +1,6 @@
 <div class="content">
   <div class="container" id="show">
-    <div class="card" style="width: 80%">
+    <div class="card">
       <% if @life.photos.attached? %>
         <%= cl_image_tag @life.photos.first.key %>
       <% else %>
