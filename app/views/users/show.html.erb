@@ -82,7 +82,7 @@
               <li class="list-group-item">$<%= booking.life.price %></li>
             </ul>
             <div class="card-links">
-              <%= link_to 'Cancel', booking_path(:booking_id=>booking),
+              <%= link_to 'Cancel', booking_path,
                                     id: "path-link",
                                     method: :delete,
                                     data: { confirm: "Are you sure you want to cancel?" } %>
