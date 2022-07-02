@@ -43,3 +43,11 @@ button[type=submit] {
   color: $riblue;
   line-height: 40px;
 }
+
+.card-title{
+  font-size:19px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bolder;
+}
