@@ -1,9 +1,11 @@
 <div class="content">
   <div class="container" id="show">
     <div class="card" style="width: 80%">
-
-      <%# <img class="card-img-top mx-auto" url=""> %>
-      <%= cl_image_tag @life.photos.first.key %>
+      <% if booking.life.photos.attached? %>
+        <%= cl_image_tag @booking.life.photos.first.key %>
+      <% else %>
+       <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= @life.title %></h5>
         <p class="card-text"><%= @life.user.name %></p>
@@ -23,8 +25,17 @@
       </div>
     </div>
   </div>
-  <% if current_user == @owner.first %>
-    <%= render "components/bookings" %>
-  <% end %>
-<%# raise %>
-
+  <%# THESE ARE HARD CODED REVIEWS RIGHT NOW %>
+  <%# <div class="container" id="reviews">
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Reviews</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">This life sucks</li>
+        <li class="list-group-item">Had so much fun, would recommend</li>
+        <li class="list-group-item">I'm dead inside</li>
+      </ul>
+     </div>
+    </div>
+  </div> %>
+</div>

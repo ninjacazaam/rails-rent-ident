@@ -14,7 +14,11 @@
 <div class="row">
 <% @lives.each do |life| %>
 <div class="card">
-  <%= cl_image_tag life.photos.first.key %>
+  <% if life.photos.attached? %>
+    <%= cl_image_tag life.photos.first.key %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+  <% end %>
   <div class="card-body">
     <h5 class="card-title">
       <%= life.title %>

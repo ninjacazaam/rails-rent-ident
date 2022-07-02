@@ -46,7 +46,6 @@
       <h2>Make a new booking</h2>
       <a href=" <%= lives_path %> " class="btn btn-primary">Browse available lives!</a>
     </div>
-=======
   <h1>User Dashboard</h1>
   <div>
     <h2>User Info</h2>
@@ -60,11 +59,35 @@
     <% end %>
   </div>
   <div>
+    <h2>My Bookings:</h2>
     <% @user.bookings.each do |booking| %>
-      <li>Life Name: <%= booking.life.title %></li>
-      <li>About: <%= booking.life.bio %></li>
-      <li>Cost: <%= booking.life.price %></li>
-      <li>Dates: <%= booking.start_date %> to <%= booking.end_date %></li>
+      <div class="content">
+        <div class="container" id="show">
+          <div class="card" style="width: 80%">
+            <% if booking.life.photos.attached? %>
+              <%= cl_image_tag booking.life.photos.first.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= booking.life.title %></h5>
+              <p class="card-text"><%= booking.life.bio %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <% if booking.life.rating.present?%>
+              <li class="list-group-item"><%="☆" * booking.life.rating %></li>
+            <% else %>
+              <li class="list-group-item">This life has no ratings yet!</li>
+            <% end %>
+              <li class="list-group-item">$<%= booking.life.price %></li>
+            </ul>
+            <div class="card-links">
+              <%= link_to 'Cancel', booking_path(:booking_id=>booking),
+                                    id: "path-link",
+                                    method: :delete,
+                                    data: { confirm: "Are you sure you want to cancel?" } %>
+            </div>
+          </div>
     <% end %>
   </div>
   <div>
