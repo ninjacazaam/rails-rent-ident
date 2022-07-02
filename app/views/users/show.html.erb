@@ -10,25 +10,27 @@
       <%= @user.email %>
     <% end %>
     <div class="row">
+      <% if @booking.present? %>
       <h2>My Upcoming Bookings</h2>
       <% @upcoming_bookings.each do |booking| %>
       <div class="card">
          <% if booking.life.photos.attached? %>
-              <%= cl_image_tag booking.life.photos.first.key %>
-            <% else %>
-              <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
-            <% end %>
-        <div class="card-body">
-          <p><%= booking.status.upcase %></p>
-            <h5 class="card-title">
-            <%= booking.life.title %>
-            </h5>
-            <p class="card-text"><%= booking.life.bio[0,50] %>...</p>
-            <h5 class="card-text">Cost: $<%= booking.life.price %></h5>
-            <p> Dates: <%= booking.start_date %> to <%= booking.end_date %> </p>
-            <h5 class="btn"><%= link_to "See more", life_path(booking.life) %></h5>
+                <%= cl_image_tag booking.life.photos.first.key %>
+              <% else %>
+                <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+              <% end %>
+          <div class="card-body">
+              <p><%= booking.status.upcase %></p>
+              <h5 class="card-title">
+              <%= booking.life.title %>
+              </h5>
+              <p class="card-text"><%= booking.life.bio[0,50] %>...</p>
+              <h5 class="card-text">Cost: $<%= booking.life.price %></h5>
+              <p> Dates: <%= booking.start_date %> to <%= booking.end_date %> </p>
+              <h5 class="btn"><%= link_to "See more", life_path(booking.life) %></h5>
           </div>
-        </div>
+        <% end %>
+      </div>
       <% end %>
     </div>
     <div class="row">
@@ -36,7 +38,11 @@
       <div class="row">
         <% @user.lives.each do |life| %>
         <div class="card col-sm">
-          <%= cl_image_tag life.photos.first.key %>
+          <% if life.photos.attached? %>
+            <%= cl_image_tag life.photos.first.key %>
+          <% else %>
+            <img src="https://res.cloudinary.com/dial2brux/image/upload/v1656137551/Rentident_avatar_q8soqp.png" alt="">
+          <% end %>
            <div class="card-body">
             <h5 class="card-title">
             <%= life.title %>
