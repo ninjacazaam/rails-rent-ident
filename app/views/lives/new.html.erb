@@ -10,7 +10,7 @@
     <div class="col-12">
     <h2>Create a new life:</h2>
     <%= simple_form_for @life do |f| %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file %>
     <%= f.input :title, placeholder: 'What is your life called' %>
     <%= f.input :bio, placeholder: 'Describe your life!' %>
     <%= f.input :price, placeholder: 'How much to rent your life?' %>
